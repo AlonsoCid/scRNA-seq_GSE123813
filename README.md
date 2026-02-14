@@ -57,8 +57,10 @@ Specific markers like _BCR_ and _IGKC_ are visualized to show expression pattern
 
 ![IGKC](results/plots/feature_igkc.png)
 
+## 4. Conclusion
+Results indicate a significant increase in B-cell markers (e.g., IGKC and BCR) post-treatment, specifically in genes regulating immune activation. This shift confirms that anti-PD-1 therapy successfully promotes immune infiltration and reverses the suppressive tumor environment.
 
-## 4. How to Reproduce
+## 5. How to Reproduce
 1. Clone the repo on a UNIX system or wsl: git clone <repo_url>
 2. Build the environment using conda/mamba: mamba env create -f environment.yml   
 3. Run the pipeline using Snakemake: snakemake --cores 4
