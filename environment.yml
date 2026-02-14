@@ -1,0 +1,20 @@
+name: scrna
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - snakemake
+  - graphviz
+  - r-base=4.4
+  - r-tidyverse
+  - r-readxl
+  - r-knitr
+  - r-kableextra
+  - r-seurat
+  - r-presto
+  - bioconductor-geoquery
+  - bioconductor-singler
+  - bioconductor-singlecellexperiment
+  - bioconductor-celldex
+  - bioconductor-scrapper
