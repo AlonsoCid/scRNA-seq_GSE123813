@@ -1,9 +1,8 @@
 # scRNA-seq Analysis of Squamous Cell Carcinoma (GSE123813)
 
-## 1. Project Overview
 This project is a scRNA-seq pipeline to analyse Squamous cell carcinoma (scc) samples, pre- and post-anti-PD-1 therapy. The data is obtained from GEO: [GSE123813](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE123813), which has already been processed through Cell Ranger to generate the count matrix. The entire pipeline can be reproduced using Conda and Snakemake.
 
-## 2. Pipeline Structure
+## 1. Pipeline Structure
 The analysis is automated using Snakemake, divided into four modular steps:
 
   - 01_get_data.R: Downloads raw counts and metadata from GEO and creates a Seurat object.
@@ -14,7 +13,7 @@ The analysis is automated using Snakemake, divided into four modular steps:
 
   - 04_annotation_and_dea.R: Cluster characterization and Differential Expression Analysis (DEA).
 
-## 3. Analysis and Results
+## 2. Analysis and Results
 ### Quality Control (QC)
 We identify low-quality cells by looking at the number of detected unique genes (nFeature_RNA), unique molecular identifiers (nCount_RNA), and the percentage of mitochondrial genes (percent.mt). High mitochondrial content often indicates dying or stressed cells.
 gene vs count correlation
@@ -57,11 +56,11 @@ Specific markers like _BCR_ and _IGKC_ are visualized to show expression pattern
 
 ![IGKC](results/plots/feature_igkc.png)
 
-## 4. Conclusion
+## 3. Conclusion
 Results indicate a significant increase in B-cell markers (e.g., IGKC and BCR) post-treatment, specifically in genes regulating immune activation. This shift confirms that anti-PD-1 therapy successfully promotes immune infiltration and reverses the suppressive tumor environment.
 
-## 5. How to Reproduce
-1. Clone the repo on a UNIX system or wsl: git clone <repo_url>
+## 4. How to Reproduce
+1. Clone the repo on a UNIX system or wsl: git clone https://github.com/AlonsoCid/scRNA-seq_GSE123813
 2. Build the environment using conda/mamba: mamba env create -f environment.yml   
 3. Run the pipeline using Snakemake: snakemake --cores 4
 Snakemake will automatically download the data, run the 4 scripts in order and generate the plots and tables in /results/.
