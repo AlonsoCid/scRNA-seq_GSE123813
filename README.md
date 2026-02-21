@@ -1,6 +1,6 @@
 # scRNA-seq Analysis of Squamous Cell Carcinoma (GSE123813)
 
-This project is a scRNA-seq pipeline to analyse Squamous cell carcinoma (scc) samples, pre- and post-anti-PD-1 therapy. The data is obtained from GEO: [GSE123813](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE123813), which has already been processed through Cell Ranger to generate the count matrix. The entire pipeline can be reproduced using Conda and Snakemake.
+This project is a scRNA-seq pipeline to analyse Squamous cell carcinoma (scc) samples, pre- and post-anti-PD-1 therapy. The data is obtained from GEO: [GSE123813](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE123813), which has already been processed through Cell Ranger to generate the count matrix. The entire pipeline can be reproduced using Conda and Snakemake, it can also be executed via [Docker](https://hub.docker.com/repository/docker/alonsocid/sc_pipeline/general). See the instructions at the end.
 
 ## 1. Pipeline Structure
 The analysis is automated using Snakemake, divided into four modular steps:
@@ -60,7 +60,15 @@ Specific markers like _BCR_ and _IGKC_ are visualized to show expression pattern
 Results indicate a significant increase in B-cell markers (e.g., IGKC and BCR) post-treatment, specifically in genes regulating immune activation. This shift confirms that anti-PD-1 therapy successfully promotes immune infiltration and reverses the suppressive tumor environment.
 
 ## 4. How to Reproduce
-1. Clone the repo on a UNIX system or wsl: git clone https://github.com/AlonsoCid/scRNA-seq_GSE123813
-2. Build the environment using conda/mamba: mamba env create -f environment.yml   
-3. Run the pipeline using Snakemake: snakemake --cores 4
-Snakemake will automatically download the data, run the 4 scripts in order and generate the plots and tables in /results/.
+1. Clone the repo on a UNIX system or wsl: `git clone https://github.com/AlonsoCid/scRNA-seq_GSE123813`
+2. Navigate to the project folder: `cd scRNA-seq_GSE123813`
+3. Build the environment using conda/mamba: `mamba env create -f environment.yml`  
+4. Run the pipeline using Snakemake: `snakemake --cores 4`
+Snakemake will automatically download the data, run the 4 scripts in order and generate the plots and tables in .results/.
+
+Alternativelly, you can use Docker.
+1. Clone the repo on a UNIX system or wsl: `git clone https://github.com/AlonsoCid/scRNA-seq_GSE123813`
+2. Navigate to the project folder: `cd scRNA-seq_GSE123813`
+3. Pull the image from Docker Hub: `docker pull alonsocid/sc_pipeline:latest`
+4. Execute the pipeline: `docker run -it --rm -v $(pwd):/data alonsocid/sc_pipeline:latest \
+snakemake -s /data/Snakefile --directory /data --cores 4`
