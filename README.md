@@ -66,7 +66,7 @@ Results indicate a significant increase in B-cell markers (e.g., IGKC and BCR) p
 4. Run the pipeline using Snakemake: `snakemake --cores 4`
 Snakemake will automatically download the data, run the 4 scripts in order and generate the plots and tables in .results/.
 
-Alternativelly, you can use Docker.
+Alternatively, you can use Docker:
 1. Clone the repo on a UNIX system or wsl: `git clone https://github.com/AlonsoCid/scRNA-seq_GSE123813`
 2. Navigate to the project folder: `cd scRNA-seq_GSE123813`
 3. Pull the image from Docker Hub: `docker pull alonsocid/sc_pipeline:latest`
